@@ -12,11 +12,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('Email address'), unique=True)
     date_joined = models.DateTimeField(_('Date joined'), auto_now_add=True)
     is_active = models.BooleanField(_('Active'), default=True)
+    is_staff = models.BooleanField(_('Staff'), default=True)
     company_name = models.CharField(_('Company'), max_length=120, blank=True)
     web_address = models.CharField(_('Web address'), max_length=120, blank=True)
     
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'company_name', 'web_address']
 
     objects = UserManager()
 
