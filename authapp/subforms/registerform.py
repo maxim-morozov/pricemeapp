@@ -1,5 +1,5 @@
 from django import forms
-from authapp.models.submodels import User
+from authapp.submodels.user import User
 
 class RegisterForm(forms.ModelForm):
     

@@ -26,7 +26,7 @@ def register(request):
         form = RegisterForm()
 
     # Now we should render the response including the form
-    return render_to_response('register.html', {'form' : form})
+    return render_to_response('home.html', {'form' : form})
 
             
             

@@ -1,3 +1,4 @@
 from django.shortcuts import render
+from .subviews.registerview import register
 
-# Create your views here.
+
