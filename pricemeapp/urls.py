@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from authapp.subviews.registerview import register
+from . import views
 
 urlpatterns = [
+    url(r'^$', views.HomePage.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^register/$', register, name='register'),
 ]
