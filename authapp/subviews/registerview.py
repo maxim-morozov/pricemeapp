@@ -1,32 +1,33 @@
-from django.shortcuts import render
-from django.template import RequestContext
-from django.shortcuts import render_to_response
-from authapp.subforms.registerform import RegisterForm
+from __future__ import unicode_literals
+from django.core.urlresolvers import reverse_lazy
+from django.views import generic
+from django.contrib.auth import get_user_model
+from django.contrib import auth
+from django.contrib import messages
+from authtools import views as authviews
+from braces import views as bracesviews
+from django.conf import settings
+from authapp.subforms.userform import UserForm
 
-def register(request):
+User = get_user_model()
 
-    # Types of the requests
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
+class RegisterView(bracesviews.AnonymousRequiredMixin,
+                 bracesviews.FormValidMessageMixin,
+                 generic.CreateView):
+    form_class = UserForm
+    model = User
+    template_name = 'signup.html'
+    success_url = reverse_lazy('home')
+    form_valid_message = "You're signed up!"
 
-        if form.is_valid():
-            # Save the user
-            form.save(commit=True)
+    def form_valid(self, form):
+        r = super(SignUpView, self).form_valid(form)
+        username = form.cleaned_data["email"]
+        password = form.cleaned_data["password1"]
+        user = auth.authenticate(email=username, password=password)
+        auth.login(self.request, user)
+        return r
 
-            # Now we would need to show the successful registration page
-            # with the infromation about the process after the registration
-            assert False # TODO(MAX)
-
-        else:
-            # Log the errors
-            print (form.errors)
-
-    else:
-        # New form for the initialisation
-        form = RegisterForm()
-
-    # Now we should render the response including the form
-    return render_to_response('home.html', {'form' : form})
 
             
             

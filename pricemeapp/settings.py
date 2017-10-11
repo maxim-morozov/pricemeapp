@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # User authentification model
-AUTH_USER_MODEL = 'authapp.User'
+AUTH_USER_MODEL = 'authtools.User'
 
 # Application definition
 
@@ -45,8 +45,6 @@ INSTALLED_APPS = [
     'authtools',
     'crispy_forms',
     'easy_thumbnails',
-
-    'authapp',
 ]
 
 MIDDLEWARE = [
@@ -62,18 +60,25 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'pricemeapp.urls'
 
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+AUTH_TEMPLATE_PATH = os.path.join(BASE_DIR, 'authapp/templates')
+
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_PATH],
+        'DIRS': [TEMPLATE_PATH, AUTH_TEMPLATE_PATH],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
@@ -116,6 +121,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 TIME_ZONE = 'UTC'
 

@@ -1,0 +1,18 @@
+{% extends "auth_base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Register{% endblock %}
+
+{% block form_heading %}Registration{% endblock %}
+
+{% block form %}
+  {% crispy form %}
+
+  <div class="form-message">
+    <p>
+      Already signed up? <a href="">Log in</a>.
+    </p>
+  </div>
+{% endblock form %}
+
