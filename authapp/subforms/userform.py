@@ -36,8 +36,7 @@ class UserForm(authtoolsforms.UserCreationForm):
     @transaction.atomic()
     def save(self, commit=True):
         # Override the save method to allow saving user profile as well
-        user = super(UserForm, self).save(commit=False)
-        user.save()
+        user = super(UserForm, self).save(commit=commit)
 
         # Save the user profile linked into this user  
         userProfile = UserProfile(user = user,
