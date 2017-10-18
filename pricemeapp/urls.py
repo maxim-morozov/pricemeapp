@@ -17,10 +17,14 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls.static import static
 from authapp.subviews.registerview import RegisterView
+from authapp.subviews.logoutview import LogoutView
+
 from . import views
 
 urlpatterns = [
     url(r'^$', views.HomePage.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^register/$', RegisterView.as_view(), name='register'),
+    url(r'^logout/$', LogoutView.as_view(), name='logout'),
+    
 ]

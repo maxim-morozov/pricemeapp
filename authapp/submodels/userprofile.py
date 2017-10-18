@@ -11,8 +11,8 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # User information fields
-    company_name = models.CharField(_('Company'), max_length=120, blank=True)
-    web_address = models.CharField(_('Web address'), max_length=120, blank=True)
+    company_name = models.CharField(_('company_name'), max_length=120, blank=True)
+    web_address = models.CharField(_('web_address'), max_length=120, blank=True)
 
     class Meta:
         verbose_name = _('user_profile')
@@ -26,15 +26,15 @@ class UserProfile(models.Model):
         return self.web_address
 
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.create(user=instance)
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         UserProfile.objects.create(user=instance)
 
 
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#      instance.profile.save()
     
 
     

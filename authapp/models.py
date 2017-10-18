@@ -1,3 +1,1 @@
-#from .submodels.usermanager import *
-#from .submodels.user import *
-#from .submodels.userprofile import * 
+from authapp.submodels.userprofile import UserProfile 
