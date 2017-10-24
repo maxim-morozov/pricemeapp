@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from authapp.subviews.registerview import RegisterView
 from authapp.subviews.logoutview import LogoutView
-
+from authapp.subviews.loginview import LoginView
 from . import views
 
 urlpatterns = [
@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^register/$', RegisterView.as_view(), name='register'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
-    
+    url(r'^login/$', LoginView.as_view(), name='login'),
 ]
