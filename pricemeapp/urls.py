@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from authapp.subviews.registerview import RegisterView
 from authapp.subviews.logoutview import LogoutView
 from authapp.subviews.loginview import LoginView
+from authapp.subviews.updateview import UpdateView
 from . import views
 
 urlpatterns = [
@@ -27,4 +28,5 @@ urlpatterns = [
     url(r'^register/$', RegisterView.as_view(), name='register'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
     url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^profile/$', UpdateView.as_view(), name='profile'),
 ]
