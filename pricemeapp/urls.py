@@ -20,6 +20,7 @@ from authapp.subviews.registerview import RegisterView
 from authapp.subviews.logoutview import LogoutView
 from authapp.subviews.loginview import LoginView
 from authapp.subviews.updateview import UpdateView
+from authapp.subviews.passwordmanagementviews import PasswordChangeView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
 from . import views
 
 urlpatterns = [
@@ -29,4 +30,9 @@ urlpatterns = [
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^profile/$', UpdateView.as_view(), name='profile'),
+    url(r'^change-password/$', PasswordChangeView.as_view(), name='password-change'),
+    url(r'^password-reset/$', PasswordResetView.as_view(), name='password-reset'),
+    url(r'^password-reset-done/$', PasswordResetDoneView.as_view(), name='password-reset-done'),
+    url(r'^password-reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$$', PasswordResetConfirmView.as_view(), name='password-reset-confirm'),
+    
 ]

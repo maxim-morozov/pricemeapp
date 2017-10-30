@@ -6,6 +6,7 @@ from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
 from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 from authtools.models import User
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
 
 class LoginForm(AuthenticationForm):
     #username = forms.CharField(label = _('Username'), required=True)
@@ -24,9 +25,8 @@ class LoginForm(AuthenticationForm):
         self.helper.layout = Layout(
             Field('username', placeholder="Enter Email", autofocus=""),
             Field('password', placeholder="Enter Password"),
-            # TODO - provide ability to reset password
-            #HTML('<a href="{}">Forgot Password?</a>'.format(
-            #    reverse("accounts:password-reset"))),
+            HTML('<a href="{}">Forgot Password?</a>'.format(
+                reverse("password-reset"))),
             Field('remember_me'),
             Submit('sign_in', 'Log in',
                    css_class="btn btn-lg btn-primary btn-block"),
