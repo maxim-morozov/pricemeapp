@@ -25,7 +25,10 @@
         <div class="col-md-8 col-sm-8">
           <h1>{% include "_brandname.html" %}</h1>
           <p>Created by photographers. Made for photographers.</p>
-	  <a class="btn btn-primary" href="{% url 'register' %}" role="button">Sign up for Free!</a>
+          {% if not user.is_authenticated %}
+	  <a class="btn btn-primary" href="{% url 'register' %}"
+	     role="button">Sign up for Free!</a>
+      {% endif %}
         </div>
         <div class="col-md-4 col-sm-4">
 
@@ -54,14 +57,25 @@
       <!--p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p-->
     </div>
     <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      <h2>Providers</h2>
+      <p>We will support multiple providers with their range of
+      different albums and price lists. The price lists are updated
+      periodically to reflect up-to-date pricess as much as
+      possible. However, as this project and this website are not
+      official provider tool, the prices might not be updated
+      immediately. We are doing our best to keep the service
+      up-to-date, but this is full responsability of the photographer
+      to cross check the prices with the album and service provider. </p>
+      <!--p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p-->
     </div>
     <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      <h2>Want to work with us</h2>
+      <p>We are fully cusomisable platform and if you are seeking to
+      publish your price lists, we are here for you to help. Your
+      services can be visible only to your clients and you enjoy
+      hassle free online pricing capabilities. Contact us for any
+      enquiries you might have.</p>
+      <!--p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p-->
     </div>
   </div>
 </div>
