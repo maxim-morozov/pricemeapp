@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'easy_thumbnails',
     'authapp',
+    'settingsapp',
 ]
 
 MIDDLEWARE = [
