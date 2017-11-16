@@ -1,0 +1,11 @@
+{% extends "settings_base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Update global pricing settings{% endblock %}
+
+{% block form_heading %}Update global settings{% endblock %}
+
+{% block form %}
+  {% crispy form %}
+{% endblock form %}

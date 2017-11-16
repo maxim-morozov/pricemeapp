@@ -15,24 +15,27 @@ class GlobalSettings(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # Minimum price for all albums which from perspective of the photographer 
-    album_minimum_price = models.DecimalField(_('album_minimum_price'), decimal_places=2, default=Decimal(0.0), max_digits=20)
+    album_minimum_price = models.DecimalField(decimal_places=2, default=Decimal(0.0), max_digits=20)
 
     # Differences between minimum album price visible
-    album_minimum_price_difference_visible = models.BooleanField(_('album_minimum_price_difference_visible'), default=False)
+    album_minimum_price_difference_visible = models.BooleanField(default=False)
 
     # Percentage on top of the minimum price as photographer price
-    commission_percent = models.DecimalField(_('commission_percent'), decimal_places=2, default=Decimal(0.0), max_digits=20)
+    commission_percent = models.DecimalField(decimal_places=2, default=Decimal(0.0), max_digits=20)
 
     # Commission charge visible
-    commission_charge_visible = models.BooleanField(_('commission_charge_visible'), default=False)
+    commission_charge_visible = models.BooleanField(default=False)
 
     # Photographer charge
-    photographer_charge = models.DecimalField(_('photographer_charge'), decimal_places=2, default=Decimal(0.0), max_digits=20)
+    photographer_charge = models.DecimalField(decimal_places=2, default=Decimal(0.0), max_digits=20)
     
     # Photographter charge visible
-    photographer_charge_visible = models.BooleanField(_('photographer_charge_visible'), default=False)
+    photographer_charge_visible = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _('global_settings')
         verbose_name_plural = _('global_settings')
         app_label = 'settingsapp'
+
+    def __str__(self):
+        return "GlobalSettings < user: " + str(self.user) + ", album_minimum_price: " + str(self.album_minimum_price) + ", album_minimum_price_difference_visible: " + str(self.album_minimum_price_difference_visible) + ", commission_percent: " + str(self.commission_percent) + ", commission_charge_visible: " + str(self.commission_charge_visible) + ", photographer_charge: " + str(self.photographer_charge) + ", photographer_charge_visible: " + str(self.photographer_charge_visible) + " > "

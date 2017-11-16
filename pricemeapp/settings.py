@@ -67,12 +67,13 @@ ROOT_URLCONF = 'pricemeapp.urls'
 
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
 AUTH_TEMPLATE_PATH = os.path.join(BASE_DIR, 'authapp/templates')
+SETTINGS_TEMPLATE_PATH = os.path.join(BASE_DIR, 'settingsapp/templates')
 
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_PATH, AUTH_TEMPLATE_PATH],
+        'DIRS': [TEMPLATE_PATH, AUTH_TEMPLATE_PATH, SETTINGS_TEMPLATE_PATH],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
