@@ -19,7 +19,12 @@ class GlobalSettingsForm(forms.ModelForm):
 
     class Meta:
         model = GlobalSettings
-        fields = ('album_minimum_price', 'album_minimum_price_difference_visible', 'commission_percent', 'commission_charge_visible', 'photographer_charge', 'photographer_charge_visible')
+        fields = ('album_minimum_price',
+                  'album_minimum_price_difference_visible',
+                  'commission_percent',
+                  'commission_charge_visible',
+                  'photographer_charge',
+                  'photographer_charge_visible')
             
     def __init__(self, *args, **kwargs):
         super(GlobalSettingsForm, self).__init__(*args, **kwargs)
@@ -55,23 +60,3 @@ class GlobalSettingsForm(forms.ModelForm):
                 Field('photographer_charge'),
                 Field('photographer_charge_visible'),
                 Submit('update', 'Update', css_class="btn-warning"))
-
-        @transaction.atomic()
-        def save(self, commit=True):
-            logger.debug("GlobalSettingsForm saving the new global settings")
-            
-            globalsettings = super(GlobalSettingsForm, self).save(commit=False)
-            
-            # Update the fields from the form
-            globalsettings.album_minimum_price = self.cleaned_data['album_minimum_price']
-            globalsettings.album_minimum_price_difference_visible = self.cleaned_data['album_minimum_price_difference_visible']
-            globalsettings.commission_percent = self.cleaned_data['commission_percent']
-            globalsettings.commission_charge_visible = self.cleaned_data['commission_charge_visible']
-            globalsettings.photographer_charge = self.cleaned_data['photographer_charge']
-            globalsettings.photographer_charge_visible = self.cleaned_data['photographer_charge_visible']
-
-            # Commit the changes
-            if commit is True:
-                globalsettings.save()
-
-            return globalsettings
