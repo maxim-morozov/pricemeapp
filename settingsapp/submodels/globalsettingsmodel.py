@@ -38,4 +38,11 @@ class GlobalSettings(models.Model):
         app_label = 'settingsapp'
 
     def __str__(self):
-        return "GlobalSettings < user: " + str(self.user) + ", album_minimum_price: " + str(self.album_minimum_price) + ", album_minimum_price_difference_visible: " + str(self.album_minimum_price_difference_visible) + ", commission_percent: " + str(self.commission_percent) + ", commission_charge_visible: " + str(self.commission_charge_visible) + ", photographer_charge: " + str(self.photographer_charge) + ", photographer_charge_visible: " + str(self.photographer_charge_visible) + " > "
+        return "GlobalSettings < user: " + str(self.user) + \
+            ", album_minimum_price: " + str(self.album_minimum_price) + \
+            ", album_minimum_price_difference_visible: " + str(self.album_minimum_price_difference_visible) + \
+            ", commission_percent: " + str(self.commission_percent) + \
+            ", commission_charge_visible: " + str(self.commission_charge_visible) + \
+            ", photographer_charge: " + str(self.photographer_charge) + \
+            ", photographer_charge_visible: " + str(self.photographer_charge_visible) + \
+            " > "
