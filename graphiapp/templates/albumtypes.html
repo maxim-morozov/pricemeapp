@@ -1,0 +1,11 @@
+{% extends "graphi_base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Select album type{% endblock %}
+
+{% block form_heading %}Select album type{% endblock %}
+
+{% block form %}
+  {% crispy form %}
+{% endblock form %}

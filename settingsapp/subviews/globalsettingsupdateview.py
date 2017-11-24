@@ -55,7 +55,6 @@ class GlobalSettingsUpdateView(bracesviews.LoginRequiredMixin,
         form_kwargs["instance"] = self.object
         return form_kwargs
 
-
     def form_valid(self, form):
         globalsettings = super(GlobalSettingsUpdateView, self).form_valid(form)
         logger.debug("Updated the form for: " + str(globalsettings))

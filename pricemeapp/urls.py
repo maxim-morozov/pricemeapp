@@ -22,6 +22,7 @@ from authapp.subviews.loginview import LoginView
 from authapp.subviews.updateview import UpdateView
 from authapp.subviews.passwordmanagementviews import PasswordChangeView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
 from settingsapp.subviews.globalsettingsupdateview import GlobalSettingsUpdateView
+from graphiapp.subviews.albumtypeview import AlbumTypeView
 from . import views
 
 urlpatterns = [
@@ -36,4 +37,5 @@ urlpatterns = [
     url(r'^password-reset-done/$', PasswordResetDoneView.as_view(), name='password-reset-done'),
     url(r'^password-reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$$', PasswordResetConfirmView.as_view(), name='password-reset-confirm'),
     url(r'^update-settings/$', GlobalSettingsUpdateView.as_view(), name='update-settings'),
+    url(r'^album-type-selection/$', AlbumTypeView.as_view(), name='album-type-selection'),
 ]
