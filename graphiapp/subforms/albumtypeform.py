@@ -9,23 +9,24 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.views.generic import edit
 from django.core.urlresolvers import reverse_lazy
+from graphiapp.submodels.albumtypemodel import AlbumType
 
 import logging
 
 logger = logging.getLogger(settings.PROJECT_LOGGER)
 
-class AlbumTypeForm(forms.Form):
+class AlbumTypeForm(forms.ModelForm):
 
     album_type = forms.ChoiceField(widget=forms.Select(), required=True)
     
     class Meta:
         fields = ('album_type',)
+        model = AlbumType
 
     def __init__(self, *args, **kwargs):
-        kwargs.pop("instance", None)
-        self.types = kwargs.pop("types", None)
+        #kwargs.pop("instance", None)
         super(AlbumTypeForm, self).__init__(*args, **kwargs)
-        
+        self.types = AlbumType.objects.all()
 
         logger.debug("AlbumTypeForm: Initialising the form with " + str(self.types))
 
@@ -34,6 +35,6 @@ class AlbumTypeForm(forms.Form):
         
         # Initialise the layout
         self.helper = FormHelper()
+        #self.helper.form_tag = False
         self.helper.layout = Layout(
-            Field('album_type', autofocus=True),
-            Submit('next', 'Next', css_class="btn-warning"))
+            Field('album_type', autofocus=""))

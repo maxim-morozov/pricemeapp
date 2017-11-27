@@ -15,7 +15,7 @@ class AlbumType(models.Model,
    album_type = models.CharField(max_length=120, default="")
 
    # The description field
-   description = models.CharField(max_length=255, default="")   
+   description = models.CharField(max_length=120, default="")   
         
    class Meta:
        verbose_name = _("album_type")

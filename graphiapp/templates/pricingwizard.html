@@ -1,0 +1,31 @@
+{% extends "graphi_base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Configure the album{% endblock %}
+
+{% block form_heading %}Configure the album{% endblock %}
+
+{% block form %}
+<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+<progress id="progressBar" max="{{ wizard.steps.count }}" value="{{ wizard.steps.current }}"></progress>
+<hr>
+<!--table-->
+  {{ wizard.management_form }}
+  {% if wizard.form.forms %}
+     {{ wizard.form.management_form }}
+     {% for form in wizard.form.forms %}
+        {% crispy form %}
+     {% endfor %}
+  {% else %}
+    {% crispy wizard.form %}
+  {% endif %}
+<!--/table-->
+<hr>
+{% if wizard.steps.prev %}
+<button type="submit" value="{{ wizard.steps.first }}">"first step"</button>
+<button type="submit" value="{{ wizard.steps.prev }}">"prev step"</button>
+{% endif %}
+<button class="btn btn-primary btn-warning" style="float: right;" type="submit" value="{{ wizard.steps.first }}">Next</button>
+{% endblock form %}
+
