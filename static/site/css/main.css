@@ -215,6 +215,6 @@ progress:after {
 	padding:0;
 	display:inline-block;
 	float:left;
-	content: attr(value) '%';
+	content: attr(value) ' of ' attr(max);
 }
 

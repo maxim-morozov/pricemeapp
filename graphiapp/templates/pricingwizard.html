@@ -7,8 +7,7 @@
 {% block form_heading %}Configure the album{% endblock %}
 
 {% block form %}
-<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
-<progress id="progressBar" max="{{ wizard.steps.count }}" value="{{ wizard.steps.current }}"></progress>
+<progress id="progressBar" max="{{ wizard.steps.count }}" value="{{ wizard.steps.step1 }}"></progress>
 <hr>
 <!--table-->
   {{ wizard.management_form }}
