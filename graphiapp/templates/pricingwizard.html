@@ -22,8 +22,9 @@
 <!--/table-->
 <hr>
 {% if wizard.steps.prev %}
-<button type="submit" value="{{ wizard.steps.first }}">"first step"</button>
-<button type="submit" value="{{ wizard.steps.prev }}">"prev step"</button>
+<button class="btn btn-primary btn-warning" type="submit" value="{{ wizard.steps.prev }}">Prev</button>
+{% else %}
+<button class="btn btn-primary btn-warning" type="submit" disabled value="{{ wizard.steps.prev }}">Prev</button>
 {% endif %}
 <button class="btn btn-primary btn-warning" style="float: right;" type="submit" value="{{ wizard.steps.first }}">Next</button>
 {% endblock form %}
