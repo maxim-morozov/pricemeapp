@@ -11,7 +11,7 @@ from authapp.subforms.userform import UserForm
 from extra_views import CreateWithInlinesView, InlineFormSet
 from authapp.submodels.userprofile import UserProfile
 import logging
-from django.conf import settings
+
 
 User = get_user_model()
 logger = logging.getLogger(settings.PROJECT_LOGGER)
@@ -30,8 +30,10 @@ class RegisterView(bracesviews.AnonymousRequiredMixin,
         
         username = form.cleaned_data["email"]
         password = form.cleaned_data["password1"]
+        
         logger.debug("Saved user successfully: " + str(username) + " " + str(password))
         user = auth.authenticate(email=username, password=password)
+
         logger.debug("Saved user successfully: " + str(user))
         
         auth.login(self.request, user)

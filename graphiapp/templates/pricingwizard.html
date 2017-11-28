@@ -20,6 +20,7 @@
     {% crispy wizard.form %}
   {% endif %}
 <!--/table-->
+<h2 align=right>Price: {{ price }}</h2>
 <hr>
 {% if wizard.steps.prev %}
 <button class="btn btn-primary btn-warning" type="submit" value="{{ wizard.steps.prev }}">Prev</button>

@@ -16,9 +16,15 @@ logger = logging.getLogger(settings.PROJECT_LOGGER)
 
 class WizardView(bracesviews.LoginRequiredMixin,
                  SessionWizardView):
+
     template_name = "pricingwizard.html"
     login_url = reverse_lazy('login')
 
     def done(self, form_list, **kwargs):
         pass
                  
+    def get_context_data(self, **kwargs):
+        context_data = super(WizardView, self).get_context_data(**kwargs)
+        logger.debug("WizardView: get_context_data called with <" + str(kwargs) + ">")
+        context_data['price'] = '0.00'
+        return context_data
