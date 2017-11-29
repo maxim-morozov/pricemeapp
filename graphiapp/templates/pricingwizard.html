@@ -7,9 +7,14 @@
 {% block form_heading %}Configure the album{% endblock %}
 
 {% block form %}
-<progress id="progressBar" max="{{ wizard.steps.count }}" value="{{ wizard.steps.step1 }}"></progress>
-<hr>
-<!--table-->
+<form action="" method="post">{% csrf_token %}
+  <div class="progress">
+    <div class="bar" style="width:{{ progress }}">&nbsp;</div>
+    <div class="percent">{{ progress }}</div>
+    &nbsp;
+  </div>
+ <hr>
+<table>
   {{ wizard.management_form }}
   {% if wizard.form.forms %}
      {{ wizard.form.management_form }}
@@ -19,7 +24,7 @@
   {% else %}
     {% crispy wizard.form %}
   {% endif %}
-<!--/table-->
+</table>
 <h2 align=right>Price: {{ price }}</h2>
 <hr>
 {% if wizard.steps.prev %}
@@ -27,6 +32,13 @@
 {% else %}
 <button class="btn btn-primary btn-warning" type="submit" disabled value="{{ wizard.steps.prev }}">Prev</button>
 {% endif %}
-<button class="btn btn-primary btn-warning" style="float: right;" type="submit" value="{{ wizard.steps.first }}">Next</button>
+{% if wizard.steps.next %}
+<button class="btn btn-primary btn-warning" style="float: right;"
+        type="submit" value="submit">Next</button>
+{% else %}
+<button class="btn btn-primary btn-warning" style="float: right;" disabled
+        type="submit" value="submit">Next</button>
+{% endif %}
+</form>
 {% endblock form %}
 

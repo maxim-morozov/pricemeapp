@@ -211,10 +211,24 @@ progress::-webkit-progress-value {
 	box-shadow:0px 0px 6px #777 inset;
 }
 progress:after {
-	margin:-26px 0 0 -7px;
-	padding:0;
-	display:inline-block;
-	float:left;
-	content: attr(value) ' of ' attr(max);
+    margin:-26px 0 0 -7px;
+    padding: 0;
+    display: inline-block;
+    float: left;
+    /*content: attr(value) ' of ' attr(max);*/
 }
+
+.progress{
+        border: 1px solid black;
+        position:relative;
+        width:100%%;
+    }
+.bar{
+        background-color: #4CAF50;
+        position:absolute;
+    }
+.percent{
+        position:absolute;
+        left:45%;
+    }
 

@@ -25,6 +25,12 @@ class WizardView(bracesviews.LoginRequiredMixin,
                  
     def get_context_data(self, **kwargs):
         context_data = super(WizardView, self).get_context_data(**kwargs)
-        logger.debug("WizardView: get_context_data called with <" + str(kwargs) + ">")
+        logger.debug("WizardView: get_context_data called with <" + str(kwargs) + "> and context_data <" + str(context_data) + ">")
         context_data['price'] = '0.00'
+        progress = (float(context_data['wizard']['steps'].current) + 1) / float(context_data['wizard']['steps'].count) * 100.0
+        context_data['progress'] = str(progress) + "%"    
         return context_data
+
+    def get_form_kwargs(self, step):
+        logger.debug("WizardView: get_form_kwargs called for step " + str(step))
+        return {}
