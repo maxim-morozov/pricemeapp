@@ -24,7 +24,6 @@ class AlbumTypeForm(forms.ModelForm):
         model = AlbumType
 
     def __init__(self, *args, **kwargs):
-        #kwargs.pop("instance", None)
         super(AlbumTypeForm, self).__init__(*args, **kwargs)
         self.types = AlbumType.objects.all()
 
@@ -35,6 +34,6 @@ class AlbumTypeForm(forms.ModelForm):
         
         # Initialise the layout
         self.helper = FormHelper()
-        #self.helper.form_tag = False
+        fields = [Button(l.album_type, l.description) for l in self.types]
         self.helper.layout = Layout(
             Field('album_type', autofocus=""))
