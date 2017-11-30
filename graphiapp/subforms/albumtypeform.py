@@ -34,6 +34,5 @@ class AlbumTypeForm(forms.ModelForm):
         
         # Initialise the layout
         self.helper = FormHelper()
-        fields = [Button(l.album_type, l.description) for l in self.types]
         self.helper.layout = Layout(
             Field('album_type', autofocus=""))
